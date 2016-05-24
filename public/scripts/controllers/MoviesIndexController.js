@@ -29,12 +29,12 @@ angular
       });
     };
     vm.editMovie = function (movie) {
-      console.log('editing movie', vm.movie);
+      console.log('editing movie', movie);
       $http({
         method: 'PUT',
         url: '/api/movies/'+movie._id,
-        data: {  director: vm.movie.director,
-                  title: vm.movie.title}
+        data: {  director: movie.director,
+                  title: movie.title}
       }).then(function successCallback(response) {
         vm.movies.push(response.data);
         console.log(response.data);

@@ -3,8 +3,16 @@
 <input type="text" class="form-control" placeholder="New movie title" ng-model="MoviesIndexCtrl.newMovie.title">
 <input type="text" class="form-control" placeholder="New movie director" ng-model="MoviesIndexCtrl.newMovie.director">
 <button type='submit' class='btn btn-danger'>Submit</button>
+</form>
+
+
+
   <div class="row" ng-repeat="movie in MoviesIndexCtrl.movies">
     <span ng-hide='editing'><a ng-href="{{movie._id}}">{{movie.title}}</a></span>
     Director:{{movie.director}}<br>
+    <button class='btn btn-danger' ng-click="MoviesIndexCtrl.deleteMovie(movie)">Delete Movies</button>
+    <button class='btn btn-info' ng-hide="editing" ng-click="editing = true">Edit Movie</button>
+    <button class='btn btn-success' ng-show="editing" ng-click="MoviesIndexCtrl.editMovie(movie); editing = false">Save Changes</button>
+    <input ng-show="editing" ng-model="movie.title" type="text" class="form-control input-md" placeholder="movie title">
   </div>
 </div>
